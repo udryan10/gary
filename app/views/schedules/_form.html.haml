@@ -1,0 +1,35 @@
+= form_for(@schedule) do |f|
+  - if @schedule.errors.any?
+    .error_explanation
+      %h2
+        = pluralize(@schedule.errors.count, "error")
+        prohibited this schedule from being saved:
+      %ul
+        - @schedule.errors.full_messages.each do |msg|
+          = msg
+  %p
+    =f.label :type
+    %br
+    =f.select :forum, [['wanted by owner', "iwo"], ['for sale by owner', 'fso'], ['gig offered', 'go']]        
+  %p
+    =f.label :title
+    %br
+    =f.text_field :title
+  %p
+    =f.label :price
+    %br
+    =f.text_field :price
+  %p
+    =f.label :zip
+    %br
+    =f.text_field :zip
+  %p
+    =f.label :forum
+    %br
+    =f.select :city, [['Louisville','lou'],['Chicago', 'chi'],['Cincinnatti', 'cin']]
+  %p
+    =f.label :description
+    %br
+    =f.text_area :body
+  %p
+    =f.submit
