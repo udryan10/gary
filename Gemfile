@@ -42,4 +42,4 @@ gem 'haml'
 gem 'devise'
 gem 'resque', :require => "resque/server"
 gem 'mechanize'
-gem 'resque-scheduler'
+gem 'rails_12factor', group: :production
