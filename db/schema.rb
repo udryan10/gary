@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706054132) do
+ActiveRecord::Schema.define(version: 20140708020628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140706054132) do
     t.text     "posting"
     t.integer  "user_id"
     t.integer  "active",     default: 0
+    t.text     "clurl"
   end
 
   add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree

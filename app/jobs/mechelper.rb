@@ -66,8 +66,7 @@ class Mechelper
     puts "Published listing"
 
     lasturl = agent.page.body
-    id = /craigslist.org.*\/.*\/(\d+).html/.match(lasturl)
-    match = id[1]
-    return match
+    match = /"(http:\/\/.*.craigslist.org\/.*\/(\d*).html)"/.match(lasturl)
+    {:url => match[1], :id => match[2]}
   end
 end
