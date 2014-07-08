@@ -8,7 +8,6 @@ class SchedulesController < ApplicationController
     @email = current_user.email
     @schedule.active = 1
     if @schedule.save
-      
       Resque.enqueue(Post, @schedule.id, @email)
       flash[:notice] = "Schedule created successfully."
       redirect_to @schedule

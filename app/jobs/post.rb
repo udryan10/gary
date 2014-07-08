@@ -3,6 +3,7 @@ class Post
 
   def self.perform(schedule_id, email)
     @schedule = Schedule.find(schedule_id)
+    @schedule.active = 1
     log = Logger.new 'log/rescue.log'
     agent = Mechanize.new
     posting_data = Mechelper.post_listing(email,
@@ -17,6 +18,6 @@ class Post
     @schedule.posting = posting_data[:id]
     @schedule.clurl = posting_data[:url]
     @schedule.save
-    #Resque.enqueue(Validate, @schedule.id)
+    Resque.enqueue(Validate, @schedule.id)
   end
 end
