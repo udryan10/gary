@@ -40,6 +40,6 @@ gem 'spring',        group: :development
 
 gem 'haml'
 gem 'devise'
-gem 'resque', :require => "resque/server"
+gem 'resque', "~> 1.22.0", :require => "resque/server"
 gem 'mechanize'
 gem 'rails_12factor', group: :production
