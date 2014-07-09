@@ -9,6 +9,22 @@ class Mechelper
     return agent
   end
 
+  def self.posting_delete(schedule_id)
+
+    @schedule = Schedule.find(schedule_id)
+    username = @schedule.user.email
+    password = "g1hfwtfbbq"
+    posting_id = @schedule.posting
+    agent = Mechanize.new
+    agent = Mechelper.login(agent, username, password)
+    puts "Logged in..."
+
+    get_url = "https://post.craigslist.org/manage/#{posting_id}?action=delete&go=Delete+this+Posting"
+    agent.get(get_url)
+    agent.page.form_with(:method => "POST") do |form|
+    end.submit
+  end
+
   def self.post_listing(username,password,city_code,listing_type,p_title,p_price,p_zip,p_body)
     agent = Mechanize.new
 

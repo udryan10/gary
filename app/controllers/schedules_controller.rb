@@ -42,8 +42,9 @@ class SchedulesController < ApplicationController
 
   def destroy
     @schedule = Schedule.find(params[:id])
-    @schedule.destroy
-
+    Resque.enqueue(Delete, @schedule.id)
+    @schedule.active = 3
+    @schedule.save
     redirect_to schedules_path
   end
 end
