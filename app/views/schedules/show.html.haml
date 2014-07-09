@@ -6,7 +6,14 @@
   = @schedule.body
 %p
   %strong Active:
-  = @schedule.active
+  - if @schedule.active == 1
+    Posting...
+  - elsif @schedule.active == 2
+    Active
+  - elsif @schedule.active == 3
+    Deleting...
+  - else
+    Error!
 %p
   %strong Posting:
   = @schedule.posting

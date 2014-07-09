@@ -15,7 +15,14 @@
       - @schedules.each do |schedule|
         %tr
           %td 
-            = schedule.active
+            - if schedule.active == 1
+              Posting...
+            - elsif schedule.active == 2
+              Active
+            - elsif schedule.active == 3
+              Deleting...
+            - else
+              Error!
           %td
             = schedule.city
           %td
