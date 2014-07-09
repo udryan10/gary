@@ -13,7 +13,7 @@ class Mechelper
 
     @schedule = Schedule.find(schedule_id)
     username = @schedule.user.email
-    password = "g1hfwtfbbq"
+    password = @schedule.user.clpass
     posting_id = @schedule.posting
     agent = Mechanize.new
     agent = Mechelper.login(agent, username, password)

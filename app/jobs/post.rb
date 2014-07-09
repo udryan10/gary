@@ -4,10 +4,11 @@ class Post
   def self.perform(schedule_id, email)
     @schedule = Schedule.find(schedule_id)
     @schedule.active = 1
+    password = @schedule.user.clpass
     log = Logger.new 'log/rescue.log'
     agent = Mechanize.new
     posting_data = Mechelper.post_listing(email,
-                            "g1hfwtfbbq", 
+                            password, 
                             @schedule.city,
                             @schedule.forum,
                             @schedule.title,
